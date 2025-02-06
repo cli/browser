@@ -6,7 +6,8 @@ import (
 )
 
 func openBrowser(url string) error {
-	providers := []string{"xdg-open", "x-www-browser", "www-browser", "wslview"}
+	// explorer.exe is used for compatibility with Windows Subsystem for Linux
+	providers := []string{"xdg-open", "x-www-browser", "www-browser", "explorer.exe"}
 
 	// There are multiple possible providers to open a browser on linux
 	// One of them is xdg-open, another is x-www-browser, then there's www-browser, etc.
