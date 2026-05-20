@@ -1,6 +1,10 @@
 on: [push, pull_request]
 
 name: CI
+
+permissions:
+  contents: read
+
 jobs:
   test:
     strategy:
@@ -13,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Setup go
         uses: actions/setup-go@v6
         with:
