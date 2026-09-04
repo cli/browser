@@ -1,11 +1,12 @@
 package browser
 
 import (
+	"context"
 	"os/exec"
 	"strings"
 )
 
-func openBrowser(url string) error {
+func openBrowser(ctx context.Context, url string) error {
 	providers := []string{"xdg-open", "x-www-browser", "www-browser", "wslview"}
 
 	// There are multiple possible providers to open a browser on linux
@@ -13,7 +14,7 @@ func openBrowser(url string) error {
 	// Look for one that exists and run it
 	for _, provider := range providers {
 		if _, err := exec.LookPath(provider); err == nil {
-			return runCmd(provider, url)
+			return runCmd(ctx, provider, url)
 		}
 	}
 
