@@ -1,5 +1,7 @@
 package browser
 
-func openBrowser(url string) error {
-	return runCmd("open", url)
+import "context"
+
+func openBrowser(ctx context.Context, url string) error {
+	return runCmd(ctx, "open", url)
 }
