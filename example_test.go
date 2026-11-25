@@ -1,9 +1,12 @@
 package browser
 
-import "strings"
+import (
+	"context"
+	"strings"
+)
 
 func ExampleOpenFile() {
-	_ = OpenFile("index.html")
+	_ = OpenFileContext(context.Background(), "index.html")
 }
 
 func ExampleOpenReader() {
@@ -14,10 +17,10 @@ Perceptions of the most maddeningly untransmissible sort thronged upon us;
 perceptions of infinity which at the time convulsed us with joy, yet which
 are now partly lost to my memory and partly incapable of presentation to others.`
 	r := strings.NewReader(quote)
-	_ = OpenReader(r)
+	_ = OpenReaderContext(context.Background(), r)
 }
 
 func ExampleOpenURL() {
 	const url = "http://golang.org/"
-	_ = OpenURL(url)
+	_ = OpenURLContext(context.Background(), url)
 }
